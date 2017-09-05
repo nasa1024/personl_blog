@@ -1,0 +1,1 @@
+django_for_blog_systerm

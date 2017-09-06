@@ -3,4 +3,14 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'index.html')
-# Create your views here.
+
+def examples(request):
+    return render(request, 'examples.html')
+
+def a_page(request):
+    return render(request, 'page.html')
+
+def another(request):
+    return render(request, 'another.html')
+# Create your views here.http:/
+# /127.0.0.1:8000/index/examples.html

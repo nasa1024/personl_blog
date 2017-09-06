@@ -9,7 +9,7 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
   <!-- modernizr enables HTML5 elements and feature detects -->
-  <script type="text/javascript" src="/strtic/js/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="/static/js/modernizr-1.5.min.js"></script>
 </head>
 
 <body>
@@ -18,17 +18,17 @@
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="index.html">  <span class="logo_colour">寻趣</span></a></h1>
+          <h1><a href="{% url 'index' %}">  <span class="logo_colour">寻趣</span></a></h1>
           <h2>一个有趣的网站</h2>
         </div>
       </div>
       <nav>
         <div id="menu_container">
           <ul class="sf-menu" id="nav">
-            <li><a href="index.html">主页</a></li>
-            <li><a href="examples.html">使用</a></li>
-            <li><a href="page.html">一个网页</a></li>
-            <li><a href="another_page.html">其他页面</a></li>
+            <li><a href="{% url 'index' %}">主页</a></li>
+            <li><a href="{% url 'examples' %}">使用</a></li>
+            <li><a href="{% url 'a_page' %}">一个网页</a></li>
+            <li><a href="{% url 'another' %}">其他页面</a></li>
             <li><a href="#">更多功能</a>
               <ul>
                 <li><a href="#">机票信息提醒</a></li>

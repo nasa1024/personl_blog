@@ -2,13 +2,14 @@
 <html>
 
 <head>
+{% load static %}
   <title>scenic_photo_two</title>
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
   <!-- modernizr enables HTML5 elements and feature detects -->
-  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="/static/js/modernizr-1.5.min.js"></script>
 </head>
 
 <body>
@@ -24,25 +25,25 @@
       <nav>
         <div id="menu_container">
           <ul class="sf-menu" id="nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="examples.html">Examples</a></li>
-            <li><a href="page.html">A Page</a></li>
-            <li><a href="another_page.html">Another Page</a></li>
-            <li><a href="#">Example Drop Down</a>
+            <li><a href="{% url 'index' %}">主页</a></li>
+            <li><a href="{% url 'examples' %}">使用</a></li>
+            <li><a href="{% url 'a_page' %}">一个网页</a></li>
+            <li><a href="{% url 'another' %}">其他页面</a></li>
+            <li><a href="#">更多功能</a>
               <ul>
-                <li><a href="#">Drop Down One</a></li>
-                <li><a href="#">Drop Down Two</a>
+                <li><a href="#">机票信息提醒</a></li>
+                <li><a href="#">django 开发</a>
                   <ul>
-                    <li><a href="#">Sub Drop Down One</a></li>
-                    <li><a href="#">Sub Drop Down Two</a></li>
-                    <li><a href="#">Sub Drop Down Three</a></li>
-                    <li><a href="#">Sub Drop Down Four</a></li>
-                    <li><a href="#">Sub Drop Down Five</a></li>
+                    <li><a href="#">微信小程序</a></li>
+                    <li><a href="#">网络爬虫</a></li>
+                    <li><a href="#">便捷办公</a></li>
+                    <li><a href="#">图像识别</a></li>
+                    <li><a href="#">线下产品</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Drop Down Three</a></li>
-                <li><a href="#">Drop Down Four</a></li>
-                <li><a href="#">Drop Down Five</a></li>
+                <li><a href="#">微信小程序</a></li>
+                <li><a href="#">微信小程序</a></li>
+                <li><a href="#">微信聊天机器人</a></li>
               </ul>
             </li>
             <li><a href="contact.php">Contact Us</a></li>
@@ -102,15 +103,15 @@
         </ol>
         <h2>Images</h2>
         <p>images can be placed on the left, in the center or on the right:</p>
-        <span class="left"><img src="images/graphic.jpg" alt="example graphic" /></span>
+        <span class="left"><img src="/static/images/graphic.jpg" alt="example graphic" /></span>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
           exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
           irure dolor in reprehenderit in voluptate velit esse cillum.
         </p>
-        <span class="center"><img src="images/graphic.jpg" alt="example graphic" /></span>
-        <span class="right"><img src="images/graphic.jpg" alt="example graphic" /></span>
+        <span class="center"><img src="/static/images/graphic.jpg" alt="example graphic" /></span>
+        <span class="right"><img src="/static/images/graphic.jpg" alt="example graphic" /></span>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -145,9 +146,9 @@
   </div>
   <p>&nbsp;</p>
   <!-- javascript at the bottom for fast page loading -->
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
-  <script type="text/javascript" src="js/jquery.sooperfish.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.easing-sooper.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.sooperfish.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $('ul.sf-menu').sooperfish();

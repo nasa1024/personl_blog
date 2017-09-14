@@ -105,3 +105,5 @@ uwsgi --http :8000 --chdir /home/personl_blog/ -w personl_blog.wsgi --static-map
         至此你的django已经部署成功了，如果你用的是阿里云的服务器 记得把安全组规则配置一下开放你在上面所设置的端口。
         如果你想要服务器更加稳定 那么请继续看下文配置nginx
 
+        啊啊啊啊啊啊 好累改天在写 如果需要的可以联系我 qq 541573560
+

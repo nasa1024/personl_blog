@@ -1,11 +1,12 @@
 {% extends 'sf_menu.html'%}
 {% block content %}
 <div class="content">
-  <h1>李白诗词</h1>
   {% for massage in product %}
   <h2>{{ massage.title }}</h2>
-  <a>{{ massage.distribute_date}}</a>
-  <p>{{ massage.main_body }}</p>
-  {% endfor %}
+    <a1>作者：{{ massage.author }}</a1>
+    <br>
+    <a2>上传日期：{{ massage.distribute_date}}</a2>
+    <p>{{ massage.main_body }}</p>
+    {% endfor %}
 </div>
 {% endblock %}

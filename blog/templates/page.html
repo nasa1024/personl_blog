@@ -2,11 +2,11 @@
 {% block content %}
 <div class="content">
   {% for massage in product %}
-  <h2>{{ massage.title }}</h2>
-    <a1>作者：{{ massage.author }}</a1>
-    <br>
-    <a2>上传日期：{{ massage.distribute_date}}</a2>
-    <p>{{ massage.main_body }}</p>
+  <h2 style="text-align:center;">{{ massage.title }}</h2>
+    <h6 style="text-align:center;">{{ massage.author }}</h6>
+
+    <p style="text-align:center;">上传日期：{{ massage.distribute_date}}</p>
+    <p style="text-align:center;">{{ massage.main_body }}</p>
     {% endfor %}
 </div>
 {% endblock %}

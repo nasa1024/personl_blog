@@ -6,7 +6,7 @@
     <h6 style="text-align:center;">{{ massage.author }}</h6>
 
     <p style="text-align:center;">上传日期：{{ massage.distribute_date}}</p>
-    <p style="text-align:center;">{{ massage.main_body }}</p>
+    <p style="text-align:center;">{{ massage.main_body|safe }}</p>
     {% endfor %}
 </div>
 {% endblock %}

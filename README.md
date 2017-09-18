@@ -59,18 +59,18 @@ django_for_blog_systerm
 		    start_response('200 OK', [('Content-Type','text/html')])
 		    return [b"Hello World"] # python3
 		    #return ["Hello World"] # python2
-、、、
+
 		4.uwsgi --http :8000 --wsgi-file test.py
 		意思是监听来自 8000端口的 http请求， 运行test.py来处理它
 		访问你云服务器的ip地址 like this: 0.0.0.0:8000,查看test.py是否运行
 
 		5.进行项目测试（我的django位置 /home/personl_blog/personl_blog) 命令如下：
-、、、		
+
 uwsgi --http :8000 --chdir /home/personl_blog/ -w personl_blog.wsgi --static-map=/static=static
-、、、
+
         6.创建uwsgi文件
         在 home/personl_blog/ 下创建一个script文件夹（mkdir script）,然后vim uwsgi.ini 输入以下配置
-、、、
+
         [uwsgi]
         # 项目目录
         chdir=/home/personl_blog/personl_blog/
@@ -103,18 +103,18 @@ uwsgi --http :8000 --chdir /home/personl_blog/ -w personl_blog.wsgi --static-map
         daemonize=/home/personl_bloh/script/uwsgi.log
         # 指定sock的文件路径
         socket=/home/personl_blog//script/uwsgi.sock
-、、、
+
         输入完后 先esc再 ：wq保存退出
 
         6.启动配置文件
-、、、
+
         $ uwsgi --ini uwsgi.ini   # 启动uwsgi配置
         [uwsgi-static] added mapping for /static => /home/personl_blog/static    # 启动成功
-、、、
-、、、
+
+
         $ uwsgi --stop uwsgi.pid  # 关闭uwsgi
         signal_pidfile()/kill(): Operation not permitted [core/uwsgi.c line 1659]
-、、、
+
         至此你的django已经部署成功了，如果你用的是阿里云的服务器 记得把安全组规则配置一下开放你在上面所设置的端口。
         如果你想要服务器更加稳定 那么请继续看下文配置nginx
 

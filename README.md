@@ -53,7 +53,7 @@ django_for_blog_systerm
 
 		3.编写一个简单的wsgi应用测试uwsgi是否能正常使用
         	首先创建一个test.py文件(命令：vim test.py)
-、、、
+
 		# test.py
 		def application(env, start_response):
 		    start_response('200 OK', [('Content-Type','text/html')])

@@ -6,6 +6,7 @@ def index(request):
 
 def examples(request):
     return render(request, 'examples.html')
+
 def a_page(request):
     product = Artical.objects.all()
     return render(request, 'page.html',{'product':product})

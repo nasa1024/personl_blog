@@ -1,4 +1,3 @@
-django_for_blog_systerm
 ##在部署django时踩的坑 uwsgi + nginx 部署django应用
 
 最初在本地环境开发好django后 利用git克隆到了云主机上。
@@ -20,7 +19,7 @@ django_for_blog_systerm
 - mysql -u root -p ;输入密码后，进入数据库，输入 show variables like "%character%"; 发现有两个文件的编码是binry。于是乎，就在网上找教程。之间又踩了许多坑。
 
 
-	网上大部分的mysql版本是5.6的，配置文件根本不一样（不是网上有人说的不同电脑的配置文件不一样）而自从某年某月以后 ubantu 用命令安装的mysql就已经时5.7版本了(安装时未选定版本)。so，修改配置文件，5.7版本配置文件位于 /etc/mysql/mysql.conf.d/mysqld.cnf 下，
+#####网上大部分的mysql版本是5.6的，配置文件根本不一样（不是网上有人说的不同电脑的配置文件不一样）而自从某年某月以后 ubantu 用命令安装的mysql就已经时5.7版本了(安装时未选定版本)。so，修改配置文件，5.7版本配置文件位于 /etc/mysql/mysql.conf.d/mysqld.cnf 下，
 	
 
 	1.使用命令 vim /etc/mysql/mysql.conf.d/mysqld.cnf
@@ -47,7 +46,7 @@ django_for_blog_systerm
 
 		◆高度可定制（内存大小限制，服务一定次数后重启等）。
 
-	配置过程：
+####配置过程：
 
 		1.pip install uwsgi
 
@@ -66,10 +65,11 @@ django_for_blog_systerm
 		意思是监听来自 8000端口的 http请求， 运行test.py来处理它
 		访问你云服务器的ip地址 like this: 0.0.0.0:8000,查看test.py是否运行
 
+
 		5.进行项目测试（我的django位置 /home/personl_blog/personl_blog) 命令如下：
-
+```
 uwsgi --http :8000 --chdir /home/personl_blog/ -w personl_blog.wsgi --static-map=/static=static
-
+```
         6.创建uwsgi文件
         在 home/personl_blog/ 下创建一个script文件夹（mkdir script）,然后vim uwsgi.ini 输入以下配置
 

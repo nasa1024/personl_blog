@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>留言</title>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    </head>
+    <body>
+        <!-- 我是注释 -->
+        <h3>留言</h3> <!--h1-> h6-->
+        <!--method: POST /GET -->
+        <form action="/gustbook/save/" method="POST" novalidate="novalidate">
+        {% csrf_token %}
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <label>用户名:</label> <input type="text" name="username" placeholder="用户名" /> <br /><br />
+                <!--<label>标  题:</label> <input type="text" name="title" placeholder="标题" /><br /><br />-->
+                <label>内  容:</label> <textarea name="content" placeholder="内容"> </textarea><br /><br />
+            </table>
+            <input class="btn btn-success" type="submit" value="留言"/>
+        </form>
+    </body>
+</html>

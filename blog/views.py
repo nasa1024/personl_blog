@@ -11,5 +11,8 @@ def a_page(request):
     product = Artical.objects.all()
     return render(request, 'page.html',{'product':product})
 
+def examples(request):
+    return render(request, 'examples.html')
+
 # Create your views here.http:/
 # /127.0.0.1:8000/index/examples.html

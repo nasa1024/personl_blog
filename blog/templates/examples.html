@@ -1,83 +1,121 @@
-{% extends 'sf_menu.html'%}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+	{% load static %}
+	<meta charset="UTF-8">
+	<title>Canvas画图工具</title>
+	<link rel="stylesheet" href="/static/css/style1.css" />
+	<link rel="stylesheet" href="/static/css/bsf/css/bootstrap.css" />
 </head>
-<div class="content">
-  <h1>Examples</h1>
-  <script>
-    var age = "16";
-    if (age > 50){
-        alert("成年啦！");
-    }
-    alert("可以上网吧了");
-    document.write(hellow)
-  </script>
-  <p>This page contains examples of all the styled elements available as part of this design. Use this page for reference, whilst you build your website.</p>
-  <h2>Headings</h2>
-  <p>These are the different heading formats:</p>
-  <h1>Heading 1</h1>
-  <h2>Heading 2</h2>
-  <h3>Heading 3</h3>
-  <h4>Heading 4</h4>
-  <h5>Heading 5</h5>
-  <h6>Heading 6</h6>
-  <h2>Text</h2>
-  <p>The following examples show how the text (within '&lt;p&gt;&lt;/p&gt;' tags) will appear:</p>
-  <p><strong>This is an example of bold text</strong></p>
-  <p><i>This is an example of italic text</i></p>
-  <p><a href="#">This is a hyperlink</a></p>
-  <h2>Lists</h2>
-  <p>This is an unordered list:</p>
-  <ul>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-    <li>Item 4</li>
-  </ul>
-  <p>This is an ordered list:</p>
-  <ol>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-    <li>Item 4</li>
-  </ol>
-  <h2>Images</h2>
-  <p>images can be placed on the left, in the center or on the right:</p>
-  <span class="left"><img src="/static/images/graphic.jpg" alt="example graphic" /></span>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-    irure dolor in reprehenderit in voluptate velit esse cillum.
-  </p>
-  <span class="center"><img src="/static/images/graphic.jpg" alt="example graphic" /></span>
-  <span class="right"><img src="/static/images/graphic.jpg" alt="example graphic" /></span>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-    pariatur.
-  </p>
-  <h2>Tables</h2>
-  <p>Tables should be used to display data and not used for laying out your website:</p>
-  <table style="width:100%; border-spacing:0;">
-    <tr><th>Item</th><th>Description</th></tr>
-    <tr><td>Item 1</td><td>Description of Item 1</td></tr>
-    <tr><td>Item 2</td><td>Description of Item 2</td></tr>
-    <tr><td>Item 3</td><td>Description of Item 3</td></tr>
-    <tr><td>Item 4</td><td>Description of Item 4</td></tr>
-  </table>
-  <h2>Form Elements</h2>
-  <form action="#" method="post">
-    <div class="form_settings">
-      <p><span>Form field example</span><input type="text" name="name" value="" /></p>
-      <p><span>Textarea example</span><textarea rows="8" cols="50" name="name"></textarea></p>
-      <p><span>Checkbox example</span><input class="checkbox" type="checkbox" name="name" value="" /></p>
-      <p><span>Dropdown list example</span><select id="id" name="name"><option value="1">Example 1</option><option value="2">Example 2</option></select></p>
-      <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="name" value="button" /></p>
-    </div>
-  </form>
-</div>
-{% endblock %}
+<body>
+	<!-- 全屏画布 -->
+	<canvas id="canvas"></canvas>
+	<!-- 功能菜单 -->
+	<ul id="menu">
+		<li>
+			<span class="glyphicon glyphicon-pencil"> </span>
+		</li>
+		<li>
+			<span class="glyphicon glyphicon-italic"></span>
+		</li>
+		<li>
+			<span></span>
+		</li>
+		<li>
+			<span></span>
+		</li>
+		<li>
+			<span class="glyphicon glyphicon-cog"></span>
+		</li>
+		<li>
+			<span class="glyphicon glyphicon-asterisk"></span>
+		</li>
+		<li>
+			<span class="glyphicon glyphicon-erase"></span>
+		</li>
+		<li>
+			<span class="glyphicon glyphicon-repeat"></span>
+		</li>
+		<li>
+			<span class="glyphicon glyphicon-download"></span>
+		</li>
+		<li>
+			<span class="glyphicon glyphicon-floppy-save"></span>
+		</li>
+	</ul>
+	<!-- 颜色画笔选择侧边栏 -->
+	<div id="sidebar">
+		<div class="sidebar-draw">
+			<h2>画笔</h2>
+			<ul>
+				<li>
+					<span></span>
+				</li>
+				<li>
+					<span></span>
+				</li>
+				<li>
+					<span></span>
+				</li>
+				<li>
+					<span></span>
+				</li>
+				<li>
+					<span></span>
+				</li>
+				<li>
+					<span></span>
+				</li>
+			</ul>
+		</div>
+		<div class="sidebar-color">
+			<h2>颜色</h2>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 开屏动画 -->
+	<div id="firstScreen" class="first-screen">
+		<span>
+			<img src="/static/images/logo.gif" />
+		</span>
+	</div>
+	<!-- 弹窗提示框 -->
+	<div id="tip" class="tip">
+		<div class="tip-main">
+			<span></span>
+			<span class="text">你选择了红色！</span>
+		</div>
+	</div>
+	<!-- 鼠标右键菜单 -->
+	<div id="contextmenu" class="contextmenu">
+		<ul>
+			<li>Canvas画板 v3.20</li>
+			<li>全屏模式</li>
+			<li>保存绘画</li>
+		</ul>
+	</div>
+	<!-- <script src="./js/Canvas2Image.js"></script>
+	<script src="./js/jquery.base64.js"></script> -->
+	<script src="/static/js/main.js"></script>
+	<script>
+		//2s后隐藏开屏界面，初始化画板
+		!function(){
+
+			var firstScreen = document.getElementById('firstScreen');
+			setTimeout(function(){
+
+				firstScreen.style.display = 'none';
+				drawBoard.init();
+			},3500);
+		}();
+	</script>
+</body>
+</html>

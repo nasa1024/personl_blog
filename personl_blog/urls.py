@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from django.conf import settings
-from django.conf.urls.static import static
+#from django.conf import settings
+#from django.conf.urls.static import static
 from blog import views as blog_views
 
 urlpatterns = [
@@ -24,8 +24,9 @@ urlpatterns = [
     url(r'^index/$',blog_views.index, name='index'),
     url(r'^examples/$',blog_views.examples, name='examples'),
     url(r'^a_page/$',blog_views.a_page, name='a_page'),
-    url(r'^gustbook/',include('gustbook.urls',namespace='gustbook'))
-
-] #+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+    url(r'^gustbook/',include('gustbook.urls',namespace='gustbook')),
+    url(r'',include('news.urls')),
+    url(r'',include('comments.urls')),
+]
 
 

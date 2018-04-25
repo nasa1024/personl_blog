@@ -1,0 +1,160 @@
+{% load staticfiles %}
+{% load news_tags %}
+{% load blog_tags %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>长春工业大学3+1信息发布</title>
+
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
+
+    <!-- js -->
+    <script src="{% static 'blog/js/jquery-2.1.3.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/pace.min.js' %}"></script>
+    <script src="{% static 'blog/js/modernizr.custom.js' %}"></script>
+</head>
+
+<body>
+<div class="container">
+    <header id="site-header">
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-8">
+                <div class="logo">
+                    <h1><a href="{% url 'news:index' %}">3+1信息发布站</a></h1>
+                </div>
+            </div><!-- col-md-4 -->
+            <div class="col-md-8 col-sm-7 col-xs-4">
+                <nav class="main-nav" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" id="trigger-overlay" class="navbar-toggle">
+                            <span class="ion-navicon"></span>
+                        </button>
+                    </div>
+
+
+                    <!-- /.navbar-collapse -->
+                </nav>
+                <div id="header-search-box">
+                    <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
+                    <div id="search-form" class="search-form">
+                        <form role="search" method="get" name="p" id="searchform" action="{% url 'news:search' %}">
+                            <input type="search" placeholder="搜索" required>
+                            <button type="submit"><span class="ion-ios-search-strong"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- col-md-8 -->
+        </div>
+    </header>
+</div>
+<div class="copyrights">Collect from <a href="#"></a></div>
+<div class="copyrights">Modified by <a href="#">allisteam</a></div>
+
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8">
+                {% block main %}
+                {% endblock main %}
+            </main>
+            <aside class="col-md-4">
+                {% block toc %}
+                {% endblock toc %}
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">最新文章</h3>
+                    {% get_recent_post as recent_post_list %}
+                    <ul>
+                        {% for post in recent_post_list %}
+                            <li>
+                                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            </li>
+                        {% empty %}
+                        暂无文章
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="widget widget-archives">
+                    <h3 class="widget-title">时间轴</h3>
+                    {% archives as date_list %}
+                    <ul>
+                        {% for date in date_list %}
+                        <li>
+                            <a href="{% url 'news:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month }} 月</a>
+                        </li>
+                        {% empty %}
+                        暂无文章
+                        {% endfor %}
+                    </ul>
+                </div>
+             <div class="widget widget-tag-cloud">
+                    <h3 class="widget-title">标签云</h3>
+                    {% get_tag as tag_list %}
+                    <ul>
+                        {% for tag in tag_list %}
+                        <li>
+                            <a href="{% url 'news:tag' tag.pk %}">{{ tag.name }}</a>
+                             <span class="post-count">({{ tag.num_posts }})</span>
+                        </li>
+                        {% empty %}
+                        暂无标签
+                        {% endfor %}
+
+                    </ul>
+                </div>
+                <div class="widget widget-category">
+                    <h3 class="widget-title">分类</h3>
+                    {% get_categories as classify_list %}
+                    <ul>
+                        {% for classifies in classify_list %}
+                        <li>
+                            <a href="{% url 'news:classifies' classifies.pk %}">{{ classifies.name }} </a>
+                              <span class="post-count">({{ classifies.num_posts }})</span>
+                        </li>
+                        {% empty %}
+                        暂无文章
+                        {% endfor %}
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer id="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="copyright">&copy 2018 - 开发由<a href="https://github.com/JackJinSong"
+                                                        target="_blank" title="模板之家">JinSong</a></p>
+                <p class="copyright">&copy 2018 - 服务器由<a href="https://github.com/541573560"
+                                                        target="_blank" title="模板之家">Harry</a>提供</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Mobile Menu -->
+<div class="overlay overlay-hugeinc">
+    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="full-width.html">博客</a></li>
+            <li><a href="about.html">关于</a></li>
+            <li><a href="contact.html">联系</a></li>
+        </ul>
+    </nav>
+</div>
+
+<script src="{% static 'blog/js/script.js' %}"></script>
+
+</body>
+</html>
